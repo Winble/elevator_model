@@ -22,6 +22,7 @@ Elevator::Elevator( Building *building ) {
     this->building = building;
     arriveFloor(0);
     building->addElevator(this);
+    clocker = 0;
 }
 
 void Elevator::arriveFloor(int number) {
@@ -133,7 +134,6 @@ int Elevator::bottomTarget() {
 }
 
 void Elevator::updateStatus() {
-    int i;
     if(countTarget() == 0) {
         status = 0;
     } else {
@@ -144,17 +144,6 @@ void Elevator::updateStatus() {
         } else if(status == 2 && floorNumber == bottom) {
             status = 1;
         } else if(status == 0) {
-//            int up = -1, down = -1;
-//            for(i = floorNumber; i > 0; i--)
-//                if(targetFloor[i]) {
-//                    down = abs(i - floorNumber);
-//                    break;
-//                }
-//            for(i = floorNumber; i < 20; i++)
-//                if(targetFloor[i]) {
-//                    up = abs(i - floorNumber);
-//                    break;
-//                }
             int up = abs(top - floorNumber);
             int down = abs(bottom - floorNumber);
             if(up < down)
@@ -165,14 +154,13 @@ void Elevator::updateStatus() {
 
 }
 
-void Elevator::updateFloor( bool signal ) {
+void Elevator::updateFloor() {
     if(countTarget() == 0)
         return;
     if(status == 1)
         floorNumber++;
     if(status == 2)
         floorNumber--;
-//    updateStatus();
 }
 
 void Elevator::update() {

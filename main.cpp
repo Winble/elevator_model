@@ -27,8 +27,6 @@ int main() {
     }
     cin.get();
     cout << "----初始化结束----" << endl;
-//    cout << "按Enter继续:";
-//    cin.get();
     int times = 0;
     while(true) {
         cout << "输入运行次数(负数退出）：";

@@ -42,7 +42,7 @@ public:
 	int getStatus();
 	void setStatus( int status );
 	void setClocker( int time );
-	void updateFloor( bool signal );
+	void updateFloor();
 	void update();
 	void addTarget( int target );
 	bool haveTarget( int target );
